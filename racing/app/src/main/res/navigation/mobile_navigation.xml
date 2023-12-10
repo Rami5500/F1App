@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/driverFragment3">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -15,7 +15,11 @@
         android:id="@+id/navigation_dashboard"
         android:name="uk.ac.aston.cs3mdd.racingapp.ui.drivers.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_navigation_dashboard_to_driverFragment3"
+            app:destination="@id/driverFragment3" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -27,4 +31,16 @@
         android:name="uk.ac.aston.cs3mdd.racingapp.ui.favorites.FavoritesFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/driverFragment3"
+        android:name="uk.ac.aston.cs3mdd.racingapp.DriverFragment"
+        android:label="fragment_driver"
+        tools:layout="@layout/fragment_driver">
+        <argument
+            android:name="driver"
+            app:argType="model.Driver" />
+        <action
+            android:id="@+id/action_driverFragment3_to_navigation_dashboard3"
+            app:destination="@id/navigation_dashboard" />
+    </fragment>
 </navigation>
