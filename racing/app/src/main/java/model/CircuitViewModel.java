@@ -11,25 +11,25 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import service.CircuitRepository;
 import service.DriverRepository;
 
-public class DriverViewModel extends ViewModel{
-    private MutableLiveData<List<Driver>> allDrivers;
+public class CircuitViewModel extends ViewModel {
 
-    public DriverViewModel() {
+    private MutableLiveData<List<Circuit>> allCircuits;
+
+    public CircuitViewModel() {
         super();
-        allDrivers = new MutableLiveData<>(new ArrayList<>());
-
-
+        allCircuits = new MutableLiveData<>(new ArrayList<>());
     }
 
-    public LiveData<List<Driver>> getAllDrivers() {
-        return allDrivers;
+    public LiveData<List<Circuit>> getAllCircuits() {
+        return allCircuits;
     }
 
-    public void requestDrivers(DriverRepository driverRepository) {
-        if (allDrivers.getValue().size() == 0) {
-            Call<Result> userCall = driverRepository.getDriverTable();
+    public void requestCircuits(CircuitRepository circuitRepository) {
+        if (allCircuits.getValue().size() == 0) {
+            Call<Result> userCall = circuitRepository.getCircuitTable();
             userCall.enqueue(new Callback<Result>() {
 
                 @Override
@@ -38,7 +38,7 @@ public class DriverViewModel extends ViewModel{
                         Log.i("AJB", response.body().toString());
                         Result result=response.body();
 
-                        addAll(result.getMRData().getDriverTable().getDrivers());
+                        addAll(result.getMRData().getCircuitTable().getCircuits());
                     }
                 }
 
@@ -53,14 +53,15 @@ public class DriverViewModel extends ViewModel{
         }
     }
 
-    public void addAll(ArrayList<Driver> list) {
+    public void addAll(ArrayList<Circuit> list) {
         //allDrivers.getValue().addAll(list.getDriverTable().getDrivers());
 
-         allDrivers.getValue().addAll(list);
-        allDrivers.setValue(allDrivers.getValue());
-        Log.i("AJB", "Printing " + allDrivers.getValue().size() + " Drivers");
-        for (Driver driver : allDrivers.getValue()) {
-            Log.i("AJB", driver.toString());
+        allCircuits.getValue().addAll(list);
+        allCircuits.setValue(allCircuits.getValue());
+        Log.i("AJB", "Printing " + allCircuits.getValue().size() + " Circuits");
+        for (Circuit circuit : allCircuits.getValue()) {
+            Log.i("AJB", circuit.toString());
         }
     }
+
 }
