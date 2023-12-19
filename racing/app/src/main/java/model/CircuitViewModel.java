@@ -28,6 +28,9 @@ public class CircuitViewModel extends ViewModel {
     }
 
     public void requestCircuits(CircuitRepository circuitRepository) {
+        if (allCircuits == null) {
+            allCircuits = new MutableLiveData<>(new ArrayList<>());
+        }
         if (allCircuits.getValue().size() == 0) {
             Call<Result> userCall = circuitRepository.getCircuitTable();
             userCall.enqueue(new Callback<Result>() {

@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class CircuitTable {
 
-    private ArrayList<Circuit> circuits;
+    private ArrayList<Circuit> Circuits;
     private String season;
 
     public ArrayList<Circuit> getCircuits() {
-        return circuits;
+        return Circuits;
     }
 
     public void setCircuits(ArrayList<Circuit> circuits) {
-        this.circuits = circuits;
+        this.Circuits = circuits;
     }
 
     public String getSeason() {

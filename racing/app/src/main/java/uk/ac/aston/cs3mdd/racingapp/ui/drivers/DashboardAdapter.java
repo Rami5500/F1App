@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import model.Driver;
@@ -53,6 +55,8 @@ public class DashboardAdapter extends
         String displayName = driver.getFamilyName() + " " + driver.getGivenName();
         holder.username.setText(displayName);
         holder.nationalityView.setText(driver.getNationality());
+        holder.codeView.setText(driver.getCode());
+        holder.permanentNumberView.setText(String.valueOf(driver.getPermanentNumber()));
     }
 
     @Override
@@ -79,10 +83,9 @@ public class DashboardAdapter extends
 
      */
     class DriverViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
-        public final TextView driverIdView;
+        public final TextView codeView;
+        public final TextView permanentNumberView;
         public final TextView username;
-        public final TextView givenNameView;
-        public final TextView familyNameView;
         public final TextView nationalityView;
         final DashboardAdapter mAdapter;
         public Driver driver;
@@ -91,10 +94,11 @@ public class DashboardAdapter extends
             super(itemView);
             itemView.setOnClickListener(this);
             username = itemView.findViewById(R.id.username);
-            driverIdView = itemView.findViewById(R.id.driverId);
-            givenNameView = itemView.findViewById(R.id.givenName);
-            familyNameView = itemView.findViewById(R.id.familyName);
+
             nationalityView = itemView.findViewById(R.id.nationality);
+            permanentNumberView = itemView.findViewById(R.id.permanentNumber);
+            codeView = itemView.findViewById(R.id.code);
+
             this.mAdapter = adapter;
         }
 

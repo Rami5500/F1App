@@ -10,10 +10,21 @@ public class Driver implements Serializable {
     // "nationality":"Thai"}
     //private DriverTable driverTable;
     private String driverId;
+    private Integer permanentNumber;
+
+    public Integer getPermanentNumber() {
+        return permanentNumber;
+    }
+
+    public void setPermanentNumber(Integer permanentNumber) {
+        this.permanentNumber = permanentNumber;
+    }
+
     private String code;
     private String givenName;
     private String familyName;
     private String nationality;
+
 
     //public DriverTable getDriverTable() {
       //  return driverTable;

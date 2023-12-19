@@ -6,7 +6,7 @@ public class Circuit implements Serializable {
 
     private String circuitId;
     private String circuitName;
-    private Location location;
+    private Location Location;
 
     public String getCircuitId() {
         return circuitId;
@@ -25,21 +25,39 @@ public class Circuit implements Serializable {
     }
 
     public Location getLocation() {
-        return location;
+        return Location;
     }
 
     public void setLocation(Location location) {
-        this.location = location;
+        this.Location = location;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(getCircuitName());
+        if (getCircuitName() != null) {
+            sb.append(getCircuitName());
+        } else {
+            sb.append("N/A");
+        }
         sb.append(" ");
-        sb.append(getLocation().getLocality());
-        sb.append(" ");
-        sb.append(getLocation().getCountry());
+        if (getLocation() != null) {
+            if (getLocation().getLocality() != null) {
+                sb.append(getLocation().getLocality());
+            } else {
+                sb.append("N/A");
+            }
+
+            sb.append(" ");
+            if (getLocation().getCountry() != null) {
+                sb.append(getLocation().getCountry());
+            } else {
+                sb.append("N/A");
+            }
+        } else {
+            sb.append("N/A N/A");
+        }
+
         return sb.toString();
     }
 }

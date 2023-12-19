@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class Location implements Serializable {
 
-    private String lat;
+    private double lat;
 
     private double lng;
     private String locality;
     private String country;
 
-    public String getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 

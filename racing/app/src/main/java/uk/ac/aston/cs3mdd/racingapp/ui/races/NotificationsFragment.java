@@ -21,6 +21,7 @@ import model.Circuit;
 import model.CircuitViewModel;
 import model.Driver;
 import model.DriverViewModel;
+import model.Location;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import service.CircuitInfo;
@@ -36,8 +37,9 @@ public class NotificationsFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
     private CircuitViewModel viewModel;
+    private Location location;
     private RecyclerView mRecyclerView;
-    private DashboardAdapter mAdapter;
+    private NotificationsAdapter mAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,8 +50,10 @@ public class NotificationsFragment extends Fragment {
         View root = binding.getRoot();
         viewModel = new ViewModelProvider(requireActivity()).get(CircuitViewModel.class);
 
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //circuit = NotificationsFragment.fromBundle(getArguments()).getCircuit();
+
+        //final TextView textView = binding.textNotifications;
+        //notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
@@ -59,13 +63,15 @@ public class NotificationsFragment extends Fragment {
         //final Observer<List<User>> userListObserver = new Observer<List<User>>() {
         final Observer<List<Circuit>> circuitListObserver = new Observer<List<Circuit>>() {
 
+
+
             @Override
             public void onChanged(@Nullable final List<Circuit> userList) {
                 // Update the UI, in this case, a Toast.
                 Toast.makeText(getContext(),
                         "We got a list of " + userList.size() + " circuits",
                         Toast.LENGTH_LONG).show();
-                //mAdapter.updateData(userList);
+                mAdapter.updateData(userList);
             }
         };
 
@@ -89,9 +95,18 @@ public class NotificationsFragment extends Fragment {
 
          */
 
+        //NotificationsViewModel notificationsViewModel =
+                //new ViewModelProvider(this).get(NotificationsViewModel.class);
         viewModel = new ViewModelProvider(requireActivity()).get(CircuitViewModel.class);
         viewModel.getAllCircuits().observe(getViewLifecycleOwner(), circuitListObserver);
-
+        // Get a handle to the RecyclerView.
+        mRecyclerView = view.findViewById(R.id.recyclerview);
+        // Create an adapter and supply the data to be displayed.
+        mAdapter = new NotificationsAdapter(getContext(), viewModel.getAllCircuits().getValue());
+        // Connect the adapter with the RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+        // Give the RecyclerView a default layout manager.
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
 
