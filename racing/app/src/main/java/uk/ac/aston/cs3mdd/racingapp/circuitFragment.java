@@ -6,10 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -66,10 +66,12 @@ public class circuitFragment extends Fragment implements OnMapReadyCallback {
         // Add a marker at the user's location and move the camera
 
         //Location l = location.getLocation().getCoordinates();
-        LatLng loc = new LatLng(location.getLat(), location.getLong());
+        LatLng loc = new LatLng(location.getLat(), location.getLon());
+        //LatLng loc = new LatLng(52.0693, -1.0214);
+        Log.d("MapFragment", "Original Lat: " + location.getLat() + ", Original Long: " + location.getLon());
         mMap.addMarker(new MarkerOptions()
                 .position(loc)
-                .title("Location of this user"));
+                .title("Location of this circuit"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 10));
         mMap.getUiSettings().setZoomControlsEnabled(true);
     }

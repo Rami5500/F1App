@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -107,7 +108,7 @@ public class DashboardAdapter extends
             DashboardFragmentDirections.ActionNavigationDashboardToDriverFragment3 action =
                     DashboardFragmentDirections.actionNavigationDashboardToDriverFragment3(driver);
             Navigation.findNavController(v)
-                    .navigate(action);
+                    .navigate((NavDirections) action);
 
 
         }

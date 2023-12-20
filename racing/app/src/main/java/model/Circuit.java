@@ -54,6 +54,9 @@ public class Circuit implements Serializable {
             } else {
                 sb.append("N/A");
             }
+            sb.append(" ");
+            sb.append("Latitude: ").append(getLocation().getLat());
+            sb.append(", Longitude: ").append(getLocation().getLon());
         } else {
             sb.append("N/A N/A");
         }

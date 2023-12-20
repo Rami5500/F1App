@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,7 +52,9 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         if (location != null) {
             String locality = location.getLocality() != null ? location.getLocality() : "N/A";
             String country = location.getCountry() != null ? location.getCountry() : "N/A";
-            Log.d("CircuitAdapter", "Locality: " + locality + ", Country: " + country);
+
+            //Log.d("CircuitAdapter", "Locality: " + locality + ", Country: " + country);
+            //Log.i("Map", "Latitude: " + lat + ", Longitude: " + lng);
 
             holder.locality.setText(locality);
             holder.country.setText(country);
@@ -93,7 +96,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             NotificationsFragmentDirections.ActionNavigationNotificationsToCircuitFragment action =
                     NotificationsFragmentDirections.actionNavigationNotificationsToCircuitFragment(circuit);
             Navigation.findNavController(v)
-                    .navigate(action);
+                    .navigate((NavDirections) action);
         }
     }
 }
