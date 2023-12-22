@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import model.Circuit;
 import model.Location;
 import uk.ac.aston.cs3mdd.racingapp.databinding.FragmentCircuitBinding;
 
@@ -27,6 +29,7 @@ public class circuitFragment extends Fragment implements OnMapReadyCallback {
     private FragmentCircuitBinding binding;
    // private TextView tv;
     private GoogleMap mMap;
+    public Circuit circuit;
 
     public circuitFragment() {
         // Required empty public constructor
@@ -55,7 +58,15 @@ public class circuitFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        //tv.setText(location.toString());
+
+        /*if (circuit != null ) {
+            ImageView circuitImage = view.findViewById(R.id.imageView);
+            String circuitName = circuit.getCircuitName();
+            int circuitID = getCircuitId(circuitName);
+            circuitImage.setImageResource(circuitID);
+        } else {
+            Log.e("circuitFragment", "Circuit object is null");
+        }*/
 
     }
 
@@ -75,4 +86,53 @@ public class circuitFragment extends Fragment implements OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 10));
         mMap.getUiSettings().setZoomControlsEnabled(true);
     }
+
+    /*private int getCircuitId(String circuitName) {
+        switch (circuitName) {
+            case "Albert Park Grand Prix Circuit":
+                return R.drawable.albert_park_melbourne;
+            case "Circuit of the Americas":
+                return R.drawable.americas;
+            case "Bahrain":
+                return R.drawable.bahrain_flag;
+            case "Azerbaijan":
+                return R.drawable.azerbaijan;
+            case "Spain":
+                return R.drawable.spain;
+            case "Hungary":
+                return R.drawable.hungary;
+            case "Brazil":
+                return R.drawable.brazil;
+            case "Saudi Arabia":
+                return R.drawable.saudi;
+            case "Qatar":
+                return R.drawable.qatar_flag;
+            case "Singapore":
+                return R.drawable.singapore;
+            case "Monaco":
+                return R.drawable.monaco_flag;
+            case "Italy":
+                return R.drawable.italy;
+            case "Austria":
+                return R.drawable.austria;
+            case "Mexico":
+                return R.drawable.mexico;
+            case "UK":
+                return R.drawable.uk;
+            case "Belgium":
+                return R.drawable.belgium;
+            case "Japan":
+                return R.drawable.japan;
+            case "United States":
+                return R.drawable.usa;
+            case "Canada":
+                return R.drawable.canada;
+            case "UAE":
+                return R.drawable.uae;
+            case "Netherlands":
+                return R.drawable.netherlands;
+            default:
+                return R.drawable.australia;
+        }
+    }*/
 }

@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".ui.drivers.DashboardFragment">
 
+    <SearchView
+        android:id="@+id/searchViewDrivers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_view_bg"
+        android:queryHint="Search Driver Here..."
+        android:iconifiedByDefault="false"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"

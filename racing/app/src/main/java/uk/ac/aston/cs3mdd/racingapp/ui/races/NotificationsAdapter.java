@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import model.Circuit;
+import model.Driver;
 import model.Location;
 import uk.ac.aston.cs3mdd.racingapp.R;
 import uk.ac.aston.cs3mdd.racingapp.ui.drivers.DashboardFragmentDirections;
@@ -22,8 +24,13 @@ import uk.ac.aston.cs3mdd.racingapp.ui.drivers.DashboardFragmentDirections;
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.CircuitViewHolder> {
 
     private RecyclerView mRecyclerView;
-    private List<Circuit> mCircuitList;
+    public List<Circuit> mCircuitList;
     private final LayoutInflater mInflater;
+
+    public void setFilteredList(List<Circuit> filteredList){
+        this.mCircuitList = filteredList;
+        notifyDataSetChanged();
+    }
 
     public NotificationsAdapter(Context context,
                                 List<Circuit> circuitsList) {
@@ -46,6 +53,8 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
         String circuitName = circuit.getCircuitName();
         holder.circuitName.setText(circuitName);
+
+        holder.imageView.setImageResource(circuit.getImageResource());
 
         Location location = circuit.getLocation();
         Log.d("CircuitAdapter", "Location: " + location);
@@ -75,6 +84,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
         public final TextView circuitName;
         public final TextView locality;
         public final TextView country;
+        public final ImageView imageView;
 
 
         final NotificationsAdapter mAdapter;
@@ -86,6 +96,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             circuitName = itemView.findViewById(R.id.circuitName);
             locality = itemView.findViewById(R.id.locality);
             country = itemView.findViewById(R.id.country);
+            imageView = itemView.findViewById(R.id.imageView);
             this.mAdapter = adapter;
         }
 

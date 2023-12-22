@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Circuit;
@@ -40,6 +42,7 @@ public class NotificationsFragment extends Fragment {
     private Location location;
     private RecyclerView mRecyclerView;
     private NotificationsAdapter mAdapter;
+    private SearchView searchView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +74,13 @@ public class NotificationsFragment extends Fragment {
                 Toast.makeText(getContext(),
                         "We got a list of " + userList.size() + " circuits",
                         Toast.LENGTH_LONG).show();
+
+                for (Circuit circuit : mAdapter.mCircuitList) {
+                    String name = circuit.getCircuitName();
+                    int nameId = getNameId(name);
+                    circuit.setImageResource(nameId);
+                }
+
                 mAdapter.updateData(userList);
             }
         };
@@ -99,6 +109,22 @@ public class NotificationsFragment extends Fragment {
                 //new ViewModelProvider(this).get(NotificationsViewModel.class);
         viewModel = new ViewModelProvider(requireActivity()).get(CircuitViewModel.class);
         viewModel.getAllCircuits().observe(getViewLifecycleOwner(), circuitListObserver);
+
+        searchView = view.findViewById(R.id.searchViewCircuits);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterCircuitNames(newText);
+                return true;
+            }
+        });
+
         // Get a handle to the RecyclerView.
         mRecyclerView = view.findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
@@ -123,6 +149,75 @@ public class NotificationsFragment extends Fragment {
 
         viewModel.requestCircuits(new CircuitRepository(service));
 
+
+    }
+
+    private int getNameId(String name) {
+        switch (name) {
+            case "Albert Park Grand Prix Circuit":
+                return R.drawable.albert_park_melbourne;
+            case "Circuit of the Americas":
+                return R.drawable.americas;
+            case "Bahrain International Circuit":
+                return R.drawable.bahrain;
+            case "Baku City Circuit":
+                return R.drawable.baku;
+            case "Circuit de Barcelona-Catalunya":
+                return R.drawable.catalunya;
+            case "Hungaroring":
+                return R.drawable.hungaroring;
+            case "Autódromo José Carlos Pace":
+                return R.drawable.sao_paulo;
+            case "Jeddah Corniche Circuit":
+                return R.drawable.jeddah;
+            case "Losail International Circuit":
+                return R.drawable.qatar;
+            case "Marina Bay Street Circuit":
+                return R.drawable.marina_bay;
+            case "Miami International Autodrome":
+                return R.drawable.miami;
+            case "Circuit de Monaco":
+                return R.drawable.monaco;
+            case "Autodromo Nazionale di Monza":
+                return R.drawable.monza;
+            case "Red Bull Ring":
+                return R.drawable.red_bull_ring;
+            case "Autódromo Hermanos Rodríguez":
+                return R.drawable.hermanos_rodriguez;
+            case "Silverstone Circuit":
+                return R.drawable.silverstone;
+            case "Circuit de Spa-Francorchamps":
+                return R.drawable.spa;
+            case "Suzuka Circuit":
+                return R.drawable.suzaka;
+            case "Las Vegas Strip Street Circuit":
+                return R.drawable.las_vegas;
+            case "Circuit Gilles Villeneuve":
+                return R.drawable.canadian;
+            case "Yas Marina Circuit":
+                return R.drawable.marina;
+            case "Circuit Park Zandvoort":
+                return R.drawable.zanvoort;
+            default:
+                return R.drawable.australia;
+        }
+    }
+
+    private void filterCircuitNames(String text) {
+
+        List<Circuit> filteredList = new ArrayList<>();
+
+        for (Circuit circuit: mAdapter.mCircuitList) {
+            if (circuit.getCircuitName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(circuit);
+            }
+        }
+
+        if (filteredList.isEmpty()){
+            Toast.makeText(getContext(), "Nothing found", Toast.LENGTH_SHORT).show();
+        } else{
+            mAdapter.setFilteredList(filteredList);
+        }
 
     }
 

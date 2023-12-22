@@ -22,8 +22,12 @@ import uk.ac.aston.cs3mdd.racingapp.R;
 public class DashboardAdapter extends
         RecyclerView.Adapter<DashboardAdapter.DriverViewHolder> {
 
-    private List<Driver> mDriverList;
+    public List<Driver> mDriverList;
     private final LayoutInflater mInflater;
+    public void setFilteredList(List<Driver> filteredList){
+        this.mDriverList = filteredList;
+        notifyDataSetChanged();
+    }
 
     public DashboardAdapter(Context context,
                             List<Driver> driversList) {

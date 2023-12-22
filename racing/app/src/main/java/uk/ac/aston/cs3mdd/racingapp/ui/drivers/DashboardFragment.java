@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,8 +16,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.DriverTable;
 import model.DriverViewModel;
 import model.Driver;
 import retrofit2.Retrofit;
@@ -32,6 +35,8 @@ public class DashboardFragment extends Fragment {
     private DriverViewModel viewModel;
     private RecyclerView mRecyclerView;
     private DashboardAdapter mAdapter;
+    private SearchView searchView;
+    //private List<Driver> driverList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +70,21 @@ public class DashboardFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(DriverViewModel.class);
         viewModel.getAllDrivers().observe(getViewLifecycleOwner(), driverListObserver);
 
+        searchView = view.findViewById(R.id.searchViewDrivers);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterDriverNames(newText);
+                return true;
+            }
+        });
+
         // Get a handle to the RecyclerView.
         mRecyclerView = view.findViewById(R.id.recyclerview);
         // Create an adapter and supply the data to be displayed.
@@ -73,6 +93,7 @@ public class DashboardFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //driverList = new ArrayList<>();
 
 
 
@@ -90,6 +111,22 @@ public class DashboardFragment extends Fragment {
         viewModel.requestDrivers(new DriverRepository(service));
 
 
+    }
+
+    private void filterDriverNames(String text) {
+        List<Driver> filteredList = new ArrayList<>();
+
+        for (Driver driver: mAdapter.mDriverList) {
+            if (driver.getGivenName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(driver);
+            }
+        }
+
+        if (filteredList.isEmpty()){
+            Toast.makeText(getContext(), "Nothing found", Toast.LENGTH_SHORT).show();
+        } else{
+            mAdapter.setFilteredList(filteredList);
+        }
     }
 
     @Override
