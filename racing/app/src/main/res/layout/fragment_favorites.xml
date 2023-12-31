@@ -8,6 +8,20 @@
     android:padding="20dp"
     tools:context=".ui.favorites.FavoritesFragment">
 
+    <TextView
+        android:id="@+id/favDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter information and hit Submit to save your entry:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <EditText
         android:id="@+id/editFavouriteDriver"
         android:layout_width="match_parent"
