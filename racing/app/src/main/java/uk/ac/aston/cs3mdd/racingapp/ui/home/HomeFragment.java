@@ -16,8 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import uk.ac.aston.cs3mdd.racingapp.R;
 import uk.ac.aston.cs3mdd.racingapp.databinding.FragmentHomeBinding;
@@ -43,9 +41,6 @@ public class HomeFragment extends Fragment {
     private List<String> favoriteTracks = new ArrayList<>();
     private List<String> visitedTracks = new ArrayList<>();
 
-    private RecyclerView homeRecyclerView;
-    private HomeAdapter homeAdapter;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -58,25 +53,8 @@ public class HomeFragment extends Fragment {
         textFavouriteTracks = root.findViewById(R.id.textFavouriteTracks);
         textVisitedTracks = root.findViewById(R.id.textVisitedTracks);
 
-        FavoritesFragment favoritesFragment = new FavoritesFragment();
-
         // Load and display favorites when the fragment is created
         loadAndDisplayFavorites();
-
-        homeRecyclerView = root.findViewById(R.id.recyclerview);
-        homeAdapter = new HomeAdapter(); // Pass your data to the adapter when initializing
-
-        homeRecyclerView.setAdapter(homeAdapter);
-        homeRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-
-        // Observe the LiveData in the ViewModel
-        homeViewModel.getDrivers().observe(getViewLifecycleOwner(), drivers -> {
-            // Update the adapter when the list of drivers changes
-            homeAdapter.setDrivers(drivers);
-            homeAdapter.notifyDataSetChanged();
-        });
-
-
 
 
         return root;
@@ -181,22 +159,6 @@ public class HomeFragment extends Fragment {
 
         favoritesFragment.saveFavourites(favoriteDrivers, favoriteTracks, visitedTracks);
     }
-
-    /*public void deleteFavoriteDriver(String driverName) {
-        // Ensure favouriteDrivers is initialized
-        if (favoriteDrivers == null) {
-            favoriteDrivers = new ArrayList<>();
-        }
-
-        // Remove the driver from the list
-        favoriteDrivers.remove(driverName);
-
-        // Update the UI or perform any other necessary actions
-        updateUI();
-
-        // Save the updated list to preferences or file
-        FavoritesFragment.saveFavourites(requireContext(), favoriteTracks, favoriteDrivers, visitedTracks);
-    }*/
 
     private void deleteFavoriteTrack(String track) {
         favoriteTracks.remove(track);

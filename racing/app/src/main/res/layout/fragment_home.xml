@@ -6,11 +6,76 @@
     android:padding="16dp"
     tools:context=".ui.home.HomeFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <ImageView
+        android:id="@+id/lineup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:src="@drawable/car_driver_lineup"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        />
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:id="@+id/FavDriverTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourite Driver:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:layout_below="@id/lineup"
+        />
+
+    <TextView
+        android:id="@+id/textFavouriteDrivers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        android:layout_below="@id/FavDriverTitle"
+        />
+
+    <TextView
+        android:id="@+id/FavTrackTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourite Tracks:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        android:layout_below="@id/textFavouriteDrivers"
+        />
+
+    <TextView
+        android:id="@+id/textFavouriteTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        android:layout_below="@id/FavTrackTitle"
+        />
+
+    <TextView
+        android:id="@+id/TracksVisitedTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tracks Visited:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        android:layout_below="@id/textFavouriteTracks"
+        />
+
+    <TextView
+        android:id="@+id/textVisitedTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        android:layout_below="@id/TracksVisitedTitle"
+        />
 
 </RelativeLayout>
