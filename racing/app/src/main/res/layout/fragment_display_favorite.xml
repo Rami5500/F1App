@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Add TextViews to display the favorite information -->
+    <TextView
+        android:id="@+id/textFavouriteDrivers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourite Drivers:"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textFavouriteTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourite Tracks:"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textVisitedTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visited Tracks:"
+        android:textStyle="bold"/>
+
+</LinearLayout>

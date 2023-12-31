@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/lineup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/car_driver_lineup"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        />
+
+    <TextView
+        android:id="@+id/FavDriverTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourite Driver:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/textFavouriteDrivers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        />
+
+    <TextView
+        android:id="@+id/FavTrackTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourite Tracks:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        />
+
+    <TextView
+        android:id="@+id/textFavouriteTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        />
+
+    <TextView
+        android:id="@+id/TracksVisitedTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tracks Visited:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        />
+
+    <TextView
+        android:id="@+id/textVisitedTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="18dp"
+        />
+
+</LinearLayout>

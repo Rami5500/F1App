@@ -34,7 +34,11 @@
         android:id="@+id/navigation_favorites"
         android:name="uk.ac.aston.cs3mdd.racingapp.ui.favorites.FavoritesFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/driverFragment3"
         android:name="uk.ac.aston.cs3mdd.racingapp.DriverFragment"
