@@ -43,16 +43,6 @@ public class DashboardAdapter extends
         return new DriverViewHolder(mItemView, this);
     }
 
-    /*
-    @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        User user = mUserList.get(position);
-        holder.user = user;
-        Name name = user.getName();
-        String displayName = name.getTitle() + " " + name.getFirst() + " " + name.getLast();
-        holder.usernameView.setText(displayName);
-    }
-     */
     @Override
     public void onBindViewHolder(@NonNull DashboardAdapter.DriverViewHolder holder, int position) {
         Driver driver = mDriverList.get(position);
@@ -74,19 +64,6 @@ public class DashboardAdapter extends
         notifyDataSetChanged();
     }
 
-    /*class UserViewHolder extends RecyclerView.ViewHolder {
-        public final TextView usernameView;
-        final UserListAdapter mAdapter;
-        public User user;
-
-        public UserViewHolder(@NonNull View itemView, UserListAdapter adapter) {
-            super(itemView);
-            usernameView = itemView.findViewById(R.id.username);
-            this.mAdapter = adapter;
-        }
-    }
-
-     */
     class DriverViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
         public final TextView codeView;
         public final TextView permanentNumberView;

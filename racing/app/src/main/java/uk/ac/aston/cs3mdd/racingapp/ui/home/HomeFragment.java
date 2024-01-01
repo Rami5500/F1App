@@ -11,11 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import uk.ac.aston.cs3mdd.racingapp.R;
 import uk.ac.aston.cs3mdd.racingapp.databinding.FragmentHomeBinding;
@@ -53,7 +55,16 @@ public class HomeFragment extends Fragment {
         textFavouriteTracks = root.findViewById(R.id.textFavouriteTracks);
         textVisitedTracks = root.findViewById(R.id.textVisitedTracks);
 
-        // Load and display favorites when the fragment is created
+        Button addEntryButtom = root.findViewById(R.id.addEntry);
+        addEntryButtom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Navigates to the favorite page
+                Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_navigation_favorites);
+            }
+        });
+
+        // Loads and displays favorites when the fragment is created
         loadAndDisplayFavorites();
 
 
@@ -74,12 +85,11 @@ public class HomeFragment extends Fragment {
             JSONArray favoriteDriversArray = favoritesObject.getJSONArray("favouriteDrivers");
             JSONArray visitedTracksArray = favoritesObject.getJSONArray("visitedTracks");
 
-            // Clear the existing lists
+            //Clears the existing lists
             favoriteDrivers.clear();
             favoriteTracks.clear();
             visitedTracks.clear();
 
-            // Populate the class-level lists
             for (int i = 0; i < favoriteDriversArray.length(); i++) {
                 String driver = favoriteDriversArray.getString(i);
                 if (!favoriteDrivers.contains(driver)) {
@@ -113,24 +123,24 @@ public class HomeFragment extends Fragment {
     private void formatListWithDeleteButton(TextView textView, List<String> list, String deleteAction) {
         SpannableStringBuilder builder = new SpannableStringBuilder();
         for (String item : list) {
-            // Add item text
+            //Adds item text
             builder.append("- ").append(item).append(" ");
 
-            // Add delete button
+            //Adds delete button
             ClickableSpan clickableSpan = new ClickableSpan() {
                 @Override
                 public void onClick(@NonNull View widget) {
-                    // Handle delete button click
+                    //Handles delete button click
                     onDeleteButtonClick(deleteAction, item);
                 }
             };
             builder.setSpan(clickableSpan, builder.length() - item.length() - 2, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
-        // Set the text with the clickable spans
+        //Sets the text with the clickable spans
         textView.setText(builder);
 
-        // Set the movement method for the TextView to make clickable spans work
+        //Sets the movement method for the TextView to make clickable spans work
         textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
@@ -151,33 +161,56 @@ public class HomeFragment extends Fragment {
 
 
     private void deleteFavoriteDriver(String driver) {
-        Log.d("Delete", "Before deletion - favoriteDrivers: " + favoriteDrivers);
-
+        //Removes the driver from the list
         favoriteDrivers.remove(driver);
 
-        Log.d("Delete", "After deletion - favoriteDrivers: " + favoriteDrivers);
+        //Updates the displayed text
+        formatListWithDeleteButton(textFavouriteDrivers, favoriteDrivers, "deleteFavoriteDriver");
 
-        favoritesFragment.saveFavourites(favoriteDrivers, favoriteTracks, visitedTracks);
+        //Saves the updated favorites to the file
+        saveFavoritesToFile();
     }
 
+    private void saveFavoritesToFile() {
+        //Saves the updated data
+        JSONObject favoritesObject = new JSONObject();
+
+        try {
+            favoritesObject.put("favouriteDrivers", new JSONArray(favoriteDrivers));
+            favoritesObject.put("favouriteTracks", new JSONArray(favoriteTracks));
+            favoritesObject.put("visitedTracks", new JSONArray(visitedTracks));
+
+            String data = favoritesObject.toString();
+
+            FileUtils.saveToFile(requireContext(), "favourites.json", data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private void deleteFavoriteTrack(String track) {
+        //Removes the track from the list
         favoriteTracks.remove(track);
-        favoritesFragment.saveFavourites(favoriteDrivers, favoriteTracks, visitedTracks);
+
+        //Updates the displayed text
+        formatListWithDeleteButton(textFavouriteTracks, favoriteTracks, "deleteFavoriteTrack");
+
+        //Saves the updated favorites to the file
+        saveFavoritesToFile();
     }
 
     private void deleteVisitedTrack(String track) {
+
+        //Removes the visited track from the list
         visitedTracks.remove(track);
-        favoritesFragment.saveFavourites(favoriteDrivers, favoriteTracks, visitedTracks);
+        //Updates the displayed text
+        formatListWithDeleteButton(textVisitedTracks, visitedTracks, "deleteVisitedTrack");
+
+        //Saves the updated favorites to the file
+        saveFavoritesToFile();
     }
 
-
-    private String formatListAsString(List<String> list) {
-        StringBuilder builder = new StringBuilder();
-        for (String item : list) {
-            builder.append("- ").append(item).append("\n");
-        }
-        return builder.toString();
-    }
 
     @Override
     public void onDestroyView() {
@@ -185,3 +218,4 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 }
+

@@ -12,14 +12,14 @@ public class HomeViewModel extends ViewModel {
 
     public HomeViewModel() {
         drivers = new MutableLiveData<>();
-        // Initialize the list of drivers here or fetch it from your data source
+        //Initializes the list of drivers here
     }
 
     public LiveData<List<String>> getDrivers() {
         return drivers;
     }
 
-    // Method to update the list of drivers
+    //A method to update the list of drivers
     public void setDrivers(List<String> newDrivers) {
         drivers.setValue(newDrivers);
     }

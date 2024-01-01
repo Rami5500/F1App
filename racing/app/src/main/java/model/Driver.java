@@ -3,12 +3,6 @@ package model;
 import java.io.Serializable;
 
 public class Driver implements Serializable {
-    //{"driverId":"albon","permanentNumber":"23","code":"ALB",
-    // "url":"http:\/\/en.wikipedia.org\/wiki\/Alexander_Albon",
-    // "givenName":"Alexander",
-    // "familyName":"Albon","dateOfBirth":"1996-03-23",
-    // "nationality":"Thai"}
-    //private DriverTable driverTable;
     private String driverId;
     private Integer permanentNumber;
 
@@ -24,15 +18,6 @@ public class Driver implements Serializable {
     private String givenName;
     private String familyName;
     private String nationality;
-
-
-    //public DriverTable getDriverTable() {
-      //  return driverTable;
-    //}
-
-    //public void setDriverTable(DriverTable driverTable) {
-      //  this.driverTable = driverTable;
-    //}
 
     public String getDriverId() {
         return driverId;
@@ -84,25 +69,5 @@ public class Driver implements Serializable {
         sb.append(getNationality());
         return sb.toString();
     }
-    /*
-    private DriverTable driverTable;
-    private String driverID;
-    private String code;
-    private String givenName;
-    private String familyName;
-    private String nationality;
-     */
 
 }
-
-/*
-    "driverId": "alonso",
-    "permanentNumber": "14",
-    "code": "ALO",
-    "url": "http://en.wikipedia.org/wiki/Fernando_Alonso",
-    "givenName": "Fernando",
-    "familyName": "Alonso",
-    "dateOfBirth": "1981-07-29",
-    "nationality": "Spanish"
-
- */

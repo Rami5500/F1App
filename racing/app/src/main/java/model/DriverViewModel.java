@@ -54,7 +54,6 @@ public class DriverViewModel extends ViewModel{
     }
 
     public void addAll(ArrayList<Driver> list) {
-        //allDrivers.getValue().addAll(list.getDriverTable().getDrivers());
 
          allDrivers.getValue().addAll(list);
         allDrivers.setValue(allDrivers.getValue());

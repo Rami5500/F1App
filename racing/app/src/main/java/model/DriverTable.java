@@ -22,9 +22,3 @@ public class DriverTable {
         this.Drivers = drivers;
     }
 }
-
-/*
-    "circuitId": "monza",
-    "constructorId": "mclaren",
-    "Drivers": [
- */

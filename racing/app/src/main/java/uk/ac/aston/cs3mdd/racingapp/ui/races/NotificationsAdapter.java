@@ -62,6 +62,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             String locality = location.getLocality() != null ? location.getLocality() : "N/A";
             String country = location.getCountry() != null ? location.getCountry() : "N/A";
 
+            //Tests to see the location retrieved is correct
             //Log.d("CircuitAdapter", "Locality: " + locality + ", Country: " + country);
             //Log.i("Map", "Latitude: " + lat + ", Longitude: " + lng);
 
@@ -102,8 +103,6 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
         @Override
         public void onClick(View v) {
-            //Log.i("AJB", "You clicked " + circuit.toString());
-            //action_navigation_notifications_to_circuitFragment
             NotificationsFragmentDirections.ActionNavigationNotificationsToCircuitFragment action =
                     NotificationsFragmentDirections.actionNavigationNotificationsToCircuitFragment(circuit);
             Navigation.findNavController(v)

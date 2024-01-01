@@ -36,7 +36,6 @@ public class DashboardFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private DashboardAdapter mAdapter;
     private SearchView searchView;
-    //private List<Driver> driverList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,19 +50,19 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //final Observer<List<User>> userListObserver = new Observer<List<User>>() {
         final Observer<List<Driver>> driverListObserver = new Observer<List<Driver>>() {
 
             @Override
             public void onChanged(@Nullable final List<Driver> userList) {
-                // Update the UI, in this case, a Toast.
+                /* Update the UI, in this case, a Toast.
                 Toast.makeText(getContext(),
                         "We got a list of " + userList.size() + " users",
                         Toast.LENGTH_LONG).show();
                 mAdapter.updateData(userList);
+
+                 */
             }
         };
-        //viewModel.getAllUsers().observe(getViewLifecycleOwner(), userListObserver);
 
         DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
@@ -93,13 +92,9 @@ public class DashboardFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //driverList = new ArrayList<>();
 
-
-
-        //final TextView textView = binding.textDashboard;
-        //dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
+        //API Base URL
+        //Code from development labs
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://ergast.com")
 

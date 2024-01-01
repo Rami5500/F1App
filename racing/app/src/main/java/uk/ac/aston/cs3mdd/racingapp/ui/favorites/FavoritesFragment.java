@@ -30,7 +30,6 @@ public class FavoritesFragment extends Fragment {
     private EditText editFavouriteTrack;
     private EditText editVisitedTrack;
     private Button submitButton;
-    private Button updateButton;
     private Button cancelButton;
     private List<String> favouriteDrivers;
     private List<String> favouriteTracks;
@@ -61,7 +60,6 @@ public class FavoritesFragment extends Fragment {
         editFavouriteTrack = root.findViewById(R.id.editFavouriteTrack);
         editVisitedTrack = root.findViewById(R.id.editVisitedTrack);
         submitButton = root.findViewById(R.id.submitButton);
-        updateButton = root.findViewById(R.id.updateButton);
         cancelButton = root.findViewById(R.id.cancelButton);
 
         Button showFavoriteButton = root.findViewById(R.id.showFavesButton);
@@ -74,22 +72,15 @@ public class FavoritesFragment extends Fragment {
         });
 
         submitButton.setOnClickListener(v -> onSubmitClicked());
-        updateButton.setOnClickListener(v -> onUpdateClicked());
         cancelButton.setOnClickListener(v -> onCancelClicked());
 
         favouriteDrivers = new ArrayList<>();
         favouriteTracks = new ArrayList<>();
         visitedTracks = new ArrayList<>();
 
-        updateButton.setOnClickListener(v -> {
-            updateButton.setVisibility(View.GONE);
-            submitButton.setVisibility(View.VISIBLE);
-            cancelButton.setVisibility(View.VISIBLE);
-        });
 
         // Setting the visibility of the buttons
         // https://stackoverflow.com/questions/6173400/how-to-hide-a-button-programmatically
-        updateButton.setVisibility(View.GONE);
         submitButton.setVisibility(View.VISIBLE);
         cancelButton.setVisibility(View.VISIBLE);
 
@@ -97,15 +88,15 @@ public class FavoritesFragment extends Fragment {
     }
 
     public void saveFavourites(List<String> favouriteDrivers, List<String> favouriteTracks, List<String> visitedTracks) {
-        // Load existing data
+        //Loads existing data
         loadFavourites();
 
-        // Append new data
+        //Appends new data
         this.favouriteDrivers.addAll(favouriteDrivers);
         this.favouriteTracks.addAll(favouriteTracks);
         this.visitedTracks.addAll(visitedTracks);
 
-        // Save the updated data
+        //Saves the updates data
         JSONObject favouritesObject = new JSONObject();
 
         try {
@@ -132,7 +123,6 @@ public class FavoritesFragment extends Fragment {
                 JSONArray favoriteDriversArray = favouritesObject.getJSONArray("favouriteDrivers");
                 JSONArray visitedTracksArray = favouritesObject.getJSONArray("visitedTracks");
 
-                // Initialize lists if null
                 if (favouriteTracks == null) {
                     favouriteTracks = new ArrayList<>();
                 }
@@ -145,12 +135,10 @@ public class FavoritesFragment extends Fragment {
                     visitedTracks = new ArrayList<>();
                 }
 
-                // Clear existing data
                 favouriteTracks.clear();
                 favouriteDrivers.clear();
                 visitedTracks.clear();
 
-                // Populate lists
                 for (int i = 0; i < favoriteTracksArray.length(); i++) {
                     favouriteTracks.add(favoriteTracksArray.getString(i));
                 }

@@ -46,10 +46,5 @@ public class Location implements Serializable {
         this.country = country;
     }
 
-//    @Override
-//    public String toString() {
-//        Log.i("Location", "Locality: " + locality + ", Country: " + country + ", Latitude: " + lat + ", Longitude: " + lng);
-//        return locality + ", " + country;
-//    }
 
 }

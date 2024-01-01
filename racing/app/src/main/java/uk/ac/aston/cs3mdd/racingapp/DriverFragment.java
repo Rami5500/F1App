@@ -18,16 +18,9 @@ public class DriverFragment extends Fragment {
 
     private Driver driver;
     public DriverFragment() {
-        // Required empty public constructor
+        //Empty public constructor
     }
 
-    /*@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-     */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,9 +37,7 @@ public class DriverFragment extends Fragment {
             web_view.loadUrl(wiki_link);
         }
 
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_driver, container, false);
-        return root;
+         return root;
     }
 
 }

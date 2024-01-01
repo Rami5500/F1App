@@ -1,81 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".ui.home.HomeFragment">
 
-    <ImageView
-        android:id="@+id/lineup"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/car_driver_lineup"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/FavDriverTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Favourite Driver:"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="5dp"
-        android:layout_below="@id/lineup"
-        />
+        <ImageView
+            android:id="@+id/lineup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/car_driver_lineup"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            />
+        <TextView
+            android:id="@+id/Info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Once added, click on a driver or track to remove it."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="40dp"
+            android:layout_below="@id/lineup"
+            android:textColor="#000000"
+            />
 
-    <TextView
-        android:id="@+id/textFavouriteDrivers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="18dp"
-        android:layout_below="@id/FavDriverTitle"
-        />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_below="@id/Info"/>
 
-    <TextView
-        android:id="@+id/FavTrackTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Favourite Tracks:"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="18dp"
-        android:layout_below="@id/textFavouriteDrivers"
-        />
 
-    <TextView
-        android:id="@+id/textFavouriteTracks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="18dp"
-        android:layout_below="@id/FavTrackTitle"
-        />
+        <TextView
+            android:id="@+id/FavDriverTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favourite Driver:"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:layout_below="@id/Info"
+            android:textColor="#000000"
+            />
 
-    <TextView
-        android:id="@+id/TracksVisitedTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tracks Visited:"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="18dp"
-        android:layout_below="@id/textFavouriteTracks"
-        />
+        <TextView
+            android:id="@+id/textFavouriteDrivers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="18dp"
+            android:layout_below="@id/FavDriverTitle"
+            />
 
-    <TextView
-        android:id="@+id/textVisitedTracks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="18dp"
-        android:layout_below="@id/TracksVisitedTitle"
-        />
+        <TextView
+            android:id="@+id/FavTrackTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favourite Tracks:"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:layout_below="@id/textFavouriteDrivers"
+            android:textColor="#000000"
+            />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textFavouriteTracks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="18dp"
+            android:layout_below="@id/FavTrackTitle"
+            />
+
+        <TextView
+            android:id="@+id/TracksVisitedTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tracks Visited:"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:layout_below="@id/textFavouriteTracks"
+            android:textColor="#000000"
+            />
+
+        <TextView
+            android:id="@+id/textVisitedTracks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="18dp"
+            android:layout_below="@id/TracksVisitedTitle"
+            />
+
+        <Button
+            android:id="@+id/addEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Entry"
+            android:layout_below="@id/textVisitedTracks"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+</ScrollView>

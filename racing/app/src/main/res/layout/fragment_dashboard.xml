@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/search_view_bg"
         android:queryHint="Search Driver Here..."
+        android:textColor="#000000"
         android:iconifiedByDefault="false"/>
 
 
