@@ -41,7 +41,7 @@
             android:id="@+id/FavDriverTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Favourite Driver:"
+            android:text="Favourite Drivers:"
             android:textSize="24sp"
             android:textStyle="bold"
             android:padding="5dp"

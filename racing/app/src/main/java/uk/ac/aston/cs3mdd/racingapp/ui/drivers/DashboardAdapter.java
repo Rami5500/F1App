@@ -47,7 +47,7 @@ public class DashboardAdapter extends
     public void onBindViewHolder(@NonNull DashboardAdapter.DriverViewHolder holder, int position) {
         Driver driver = mDriverList.get(position);
         holder.driver = driver;
-        String displayName = driver.getFamilyName() + " " + driver.getGivenName();
+        String displayName = driver.getGivenName() + " " + driver.getFamilyName();
         holder.username.setText(displayName);
         holder.nationalityView.setText(driver.getNationality());
         holder.codeView.setText(driver.getCode());
