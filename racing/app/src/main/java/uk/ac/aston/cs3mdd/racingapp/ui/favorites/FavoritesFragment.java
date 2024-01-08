@@ -37,6 +37,9 @@ public class FavoritesFragment extends Fragment {
     private boolean isFragmentAttached = false;
 
 
+
+    //Used the following link to help me with the onAttach() and OnDetach()
+    //https://stackoverflow.com/questions/50257505/fragment-not-attached-to-a-context
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -87,6 +90,9 @@ public class FavoritesFragment extends Fragment {
         return root;
     }
 
+    //Used the following links to figure out how to save to a file using a JSON format
+    //https://stackoverflow.com/questions/69582517/how-can-i-save-every-data-in-json-file-android-studio
+    //https://developer.android.com/training/data-storage/app-specific
     public void saveFavourites(List<String> favouriteDrivers, List<String> favouriteTracks, List<String> visitedTracks) {
         //Loads existing data
         loadFavourites();

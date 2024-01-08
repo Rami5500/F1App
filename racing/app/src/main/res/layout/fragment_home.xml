@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Used the following link for ScrollView Help-->
+<!--    https://stackoverflow.com/questions/6674341/how-to-use-scrollview-in-android-->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +9,8 @@
     android:padding="16dp"
     tools:context=".ui.home.HomeFragment">
 
+<!--    Used the following link to help me with the RelativeLayout-->
+<!--    https://developer.android.com/develop/ui/views/layout/relative-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1bc25e9-f7d5-42e3-b364-3e0fabffb73b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/circuitFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/circuitFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/drivers/DashboardFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/drivers/DashboardFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/favorites/FavoritesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/favorites/FavoritesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/favorites/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/favorites/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/home/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/java/uk/ac/aston/cs3mdd/racingapp/ui/home/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/res/layout/fragment_favorites.xml" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/res/layout/fragment_favorites.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/racing/app/src/main/res/layout/fragment_notifications.xml" beforeDir="false" afterPath="$PROJECT_DIR$/racing/app/src/main/res/layout/fragment_notifications.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

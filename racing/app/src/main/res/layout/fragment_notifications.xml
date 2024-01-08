@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.races.NotificationsFragment">
 
+<!--    Used the following link and lab code to help me with this search view-->
+<!--    https://abhiandroid.com/ui/searchview#gsc.tab=0-->
     <SearchView
         android:id="@+id/searchViewCircuits"
         android:layout_width="match_parent"
@@ -15,6 +17,8 @@
         android:iconifiedByDefault="false"
         tools:ignore="MissingConstraints" />
 
+<!--    Used the following link and lab code to help me with this recycler view-->
+<!--    https://guides.codepath.com/android/using-the-recyclerview-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"

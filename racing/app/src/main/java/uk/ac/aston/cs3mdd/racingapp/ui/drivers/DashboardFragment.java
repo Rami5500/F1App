@@ -69,6 +69,8 @@ public class DashboardFragment extends Fragment {
         viewModel = new ViewModelProvider(requireActivity()).get(DriverViewModel.class);
         viewModel.getAllDrivers().observe(getViewLifecycleOwner(), driverListObserver);
 
+        //Used the following link to figure out how to use Search view
+        //https://developer.android.com/reference/android/widget/SearchView
         searchView = view.findViewById(R.id.searchViewDrivers);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -83,6 +85,9 @@ public class DashboardFragment extends Fragment {
                 return true;
             }
         });
+
+        //Used the following links and lab code to figure out how to use a Recycler view
+        //https://developer.android.com/develop/ui/views/layout/recyclerview#java
 
         // Get a handle to the RecyclerView.
         mRecyclerView = view.findViewById(R.id.recyclerview);
@@ -117,6 +122,7 @@ public class DashboardFragment extends Fragment {
             }
         }
 
+        //Used the lab code to figure out how to use Toast messages to see what is retrieved from the API
         if (filteredList.isEmpty()){
             Toast.makeText(getContext(), "Nothing found", Toast.LENGTH_SHORT).show();
         } else{

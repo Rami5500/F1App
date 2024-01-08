@@ -23,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="20dp" />
 
+<!--    Used the following link to get help with EditTexts-->
+<!--    https://developer.android.com/reference/android/widget/EditText-->
     <EditText
         android:id="@+id/editFavouriteDriver"
         android:layout_width="match_parent"

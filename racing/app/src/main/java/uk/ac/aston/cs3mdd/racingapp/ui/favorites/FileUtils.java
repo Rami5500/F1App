@@ -10,6 +10,11 @@ import java.io.InputStreamReader;
 
 public class FileUtils {
 
+    //Used the following links to figure out how to save and read to a file using a JSON format
+    //https://stackoverflow.com/questions/69582517/how-can-i-save-every-data-in-json-file-android-studio
+    //https://developer.android.com/training/data-storage/app-specific
+
+
     public static void saveToFile(Context context, String filename, String data) {
         try {
             FileOutputStream fos = context.openFileOutput(filename, Context.MODE_PRIVATE);

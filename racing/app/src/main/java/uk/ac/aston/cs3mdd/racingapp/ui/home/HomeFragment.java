@@ -70,7 +70,10 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
-
+    //Used the following links to figure out how to remove items from a file in a JSON format
+    //https://stackoverflow.com/questions/29552921/removing-a-json-object-from-a-json-file-in-java
+    //https://www.tutorialspoint.com/how-to-remove-a-specific-element-from-a-json-array-in-java
+    //https://www.appsloveworld.com/java/100/483/how-to-remove-a-json-object-from-a-json-file?expand_article=1
     private void loadAndDisplayFavorites() {
         String data = FileUtils.readFromFile(requireContext(), "favourites.json");
 

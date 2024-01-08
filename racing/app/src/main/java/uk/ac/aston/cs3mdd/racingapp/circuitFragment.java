@@ -34,7 +34,7 @@ public class circuitFragment extends Fragment implements OnMapReadyCallback {
         //Empty public constructor
     }
 
-
+    //Used the lab code to help me figure out the map calls
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
